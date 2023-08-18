@@ -32,16 +32,35 @@ const CustomerLogin = () => {
   operation and its resulting value
      */
   try {
-      const loginSuccess = await AuthenticationService.loginCustomer(customer);
-      console.log('API response:', loginSuccess.data); // Add this line
-      if (loginSuccess) {
+      // const loginSuccess = await AuthenticationService.loginCustomer(customer);
+      // console.log('API response:', loginSuccess.data); // Add this line
+      // if (loginSuccess) {
+      //   setSuccessMessage('Login successful. Redirecting...');
+      //   setTimeout(() => {
+      //     // history('/dashboard'); // navigates to product Component
+      //   }, 2000);
+      // } else {
+      //   setErrorMessage('Invalid email or password.');
+      // }
+    const loginSuccess = await fetch("http://localhost:8088/fargoloans/api/login",{
+        method:"POST",
+        headers:{
+          "Content-Type":"applciation/json",  
+        },
+        body:JSON.stringify({
+          customer
+        })
+      })
+
+       if (loginSuccess) {
         setSuccessMessage('Login successful. Redirecting...');
         setTimeout(() => {
-          // history('/dashboard'); // navigates to product Component
+           history('/dashboard'); // navigates to product Component
         }, 2000);
       } else {
         setErrorMessage('Invalid email or password.');
       }
+
     } catch (error) {
       console.error('Login error', error);
       setErrorMessage('An error occurred during login.');
