@@ -54,9 +54,11 @@ const CustomerLogin = () => {
 
        if (loginSuccess) {
         setSuccessMessage('Login successful. Redirecting...');
-        setTimeout(() => {
+        localStorage.setItem("empId", loginSuccess);
+        localStorage.setItem("isAuth", false);
+        
            history('/dashboard'); // navigates to product Component
-        }, 2000);
+       
       } else {
         setErrorMessage('Invalid email or password.');
       }

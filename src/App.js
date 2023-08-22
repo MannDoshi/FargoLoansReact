@@ -1,11 +1,12 @@
 import './App.css';
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import AboutUs from './components/AboutUs';
 import CustomerLogin from './components/CustomerLogin';
 import CustomerRegistration from './components/CustomerRegistration';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -24,8 +25,18 @@ function App() {
                   <Route path='/' exact Component={Home}></Route>
                   <Route path='register' Component={CustomerRegistration}></Route>
                   <Route path='login' Component={CustomerLogin}></Route>
-                  <Route path='dashboard' Component={Dashboard}></Route>
+                  {/* <Route path='dashboard' Component={Dashboard}></Route> */}
                   <Route path='aboutus' Component={AboutUs}></Route>
+                  <Route
+                  path="dashboard"
+                  element={
+                    <PrivateRoute>
+                      <Dashboard/>
+                    </PrivateRoute>
+                  }
+                  />
+                  {/* <PrivateRoute path="dashboard" element = {<Dashboard/>}/> */}
+                   
               </Routes>
           </Router> 
         </div>
