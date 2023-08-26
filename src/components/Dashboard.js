@@ -7,21 +7,21 @@ export default function Dashboard() {
   const history = useNavigate();
 
   const viewHandler = () => {
-      history("/view");
+      history("/empViewLoans");
   }
 
   const applyHandler = () => {
-    history("/apply");
+    history("/applyForLoan");
   }
 
   const viewItemsHandler = () =>{
-    history("/viewItems");
+    history("/empViewItems");
   }
 
   return (
     <div>
 
-      <h2>Dashboard</h2>
+      <h2>Employee Dashboard</h2>
 
 
        <Button variant="primary" onClick={viewHandler}>View Loans</Button>{' '}

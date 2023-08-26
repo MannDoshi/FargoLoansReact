@@ -17,9 +17,9 @@ class AuthenticationService{
     because they have their own separate agenda.   
     */ 
 
-    static async registerCustomer(customer) {
+    static async registerEmployee(employee) {
         try {
-          const response = await axios.post('http://localhost:8088/fargoloans/api/customers', customer); // Adjust the API endpoint
+          const response = await axios.post('http://localhost:8088/fargoloans/api/register_employee', employee); // Adjust the API endpoint
           return response.data;
         } catch (error) {
           console.error('Registration error', error);
@@ -27,10 +27,10 @@ class AuthenticationService{
         }
       }
 
-    static async loginCustomer(customer){
+    static async loginEmployee(employee){
         console.log("In Service")
-        console.log(JSON.stringify(customer));
-        return axios.post('http://localhost:8088/fargoloans/api/login',customer);
+        console.log(JSON.stringify(employee));
+        return axios.post('http://localhost:8088/fargoloans/api/login',employee);
     }
 
     static async registerSuccessfulLogin(username, password) {      

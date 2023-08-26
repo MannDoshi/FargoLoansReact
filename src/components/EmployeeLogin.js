@@ -3,7 +3,7 @@ import AuthenticationService from '../service/AuthenticationService';
 import  {useNavigate} from 'react-router-dom';
 
 
-const CustomerLogin = () => {
+const EmployeeLogin = () => {
     const history = useNavigate();  // Object to navigate 
   
     const [email, setEmail] = useState('');
@@ -17,7 +17,7 @@ const CustomerLogin = () => {
         return;
       }
   
-      const customer = {
+      const employee = {
         email,
         password
       };
@@ -32,7 +32,7 @@ const CustomerLogin = () => {
   operation and its resulting value
      */
   try {
-      // const loginSuccess = await AuthenticationService.loginCustomer(customer);
+      // const loginSuccess = await AuthenticationService.loginEmployee(employee);
       // console.log('API response:', loginSuccess.data); // Add this line
       // if (loginSuccess) {
       //   setSuccessMessage('Login successful. Redirecting...');
@@ -48,14 +48,14 @@ const CustomerLogin = () => {
           "Content-Type":"applciation/json",  
         },
         body:JSON.stringify({
-          customer
+          employee
         })
       })
 
        if (loginSuccess) {
         setSuccessMessage('Login successful. Redirecting...');
         localStorage.setItem("empId", loginSuccess);
-        localStorage.setItem("isAuth", false);
+        localStorage.setItem("isAuth", true);
         
            history('/dashboard'); // navigates to product Component
        
@@ -73,13 +73,13 @@ const CustomerLogin = () => {
     return (
       <div className="container">
           <br></br>
-        <h2>Customer Login</h2>
+        <h2>Employee Login</h2>
         
-            <div className="form-group w-50">
+            <div className="form-group w-50 container">
                 <label>Email</label>
                 <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
-            <div className="form-group w-50">
+            <div className="form-group w-50 container">
                 <label>Password</label>
                 <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
@@ -92,4 +92,4 @@ const CustomerLogin = () => {
     );
   };
   
-  export default CustomerLogin;
+  export default EmployeeLogin;

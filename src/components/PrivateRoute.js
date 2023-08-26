@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
   const isAuth = localStorage.getItem("isAuth");
   console.log(isAuth);
   
-  return isAuth ? <Navigate to="/logout"/> : <h1>heloo</h1>
+  return isAuth ? <Navigate to="/dashboard"/> : <h1>heloo</h1>
     
     // const location = useLocation();
 
