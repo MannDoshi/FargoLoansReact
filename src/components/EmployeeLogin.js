@@ -1,24 +1,25 @@
 import React,{useState} from 'react';
 import AuthenticationService from '../service/AuthenticationService';
 import  {useNavigate} from 'react-router-dom';
+import authService from '../service/auth.service';
 
 
 const EmployeeLogin = () => {
     const history = useNavigate();  // Object to navigate 
   
-    const [email, setEmail] = useState('');
+    const [username, setusername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
   
     const handleLogin = async () => {
-      if (!email || !password) {
-        setErrorMessage('Please enter both email and password.');
+      if (!username || !password) {
+        setErrorMessage('Please enter both username and password.');
         return;
       }
   
       const employee = {
-        email,
+        username,
         password
       };
   
@@ -40,28 +41,32 @@ const EmployeeLogin = () => {
       //     // history('/dashboard'); // navigates to product Component
       //   }, 2000);
       // } else {
-      //   setErrorMessage('Invalid email or password.');
+      //   setErrorMessage('Invalid username or password.');
       // }
-    const loginSuccess = await fetch("http://localhost:8088/fargoloans/api/login",{
-        method:"POST",
-        headers:{
-          "Content-Type":"applciation/json",  
-        },
-        body:JSON.stringify({
-          employee
-        })
-      })
+    // const loginSuccess = await fetch("http://localhost:8088/fargoloans/api/signin",{
+    //     method:"POST",
+    //     headers:{
+    //       "Content-Type":"applciation/json",  
+    //     },
+    //     body:JSON.stringify({
+    //       employee
+    //     })
+    //   })
 
-       if (loginSuccess) {
-        setSuccessMessage('Login successful. Redirecting...');
-        localStorage.setItem("empId", loginSuccess);
-        localStorage.setItem("isAuth", true);
+    //    if (loginSuccess) {
+    //     setSuccessMessage('Login successful. Redirecting...');
+    //     localStorage.setItem("empId", loginSuccess);
+    //     localStorage.setItem("isAuth", true);
         
-           history('/dashboard'); // navigates to product Component
+    //        history('/dashboard'); // navigates to product Component
        
-      } else {
-        setErrorMessage('Invalid email or password.');
-      }
+    //   } else {
+    //     setErrorMessage('Invalid username or password.');
+    //   }
+    console.log("authService calling ");
+      authService.login(username,password).then((data)=>{
+        console.log("authService",data);
+      }) 
 
     } catch (error) {
       console.error('Login error', error);
@@ -76,8 +81,8 @@ const EmployeeLogin = () => {
         <h2>Employee Login</h2>
         
             <div className="form-group w-50 container">
-                <label>Email</label>
-                <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <label>username</label>
+                <input type="username" className="form-control" value={username} onChange={(e) => setusername(e.target.value)} />
             </div>
             <div className="form-group w-50 container">
                 <label>Password</label>
