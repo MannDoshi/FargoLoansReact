@@ -31,18 +31,19 @@ export default function Home() {
     <div className="App">
       
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-       <h1>Fargo Loans</h1>
+       <h1>Home Loans</h1>
       
       <section>
         <div style={{ backgroundImage: "url(/images/pms1.webp)",
                     backgroundRepeat: 'no-repeat',
                     backgroundSize:'cover', minHeight:'100vh',minWidth:'100vw'}}> 
         
-            {/* <Navbar></Navbar>
-              <Routes> */}
+            <Navbar></Navbar>
+              {/* <Routes> */}
                   <Link to='signin'>signin</Link>
+                  {/* <EmployeeRegistration></EmployeeRegistration> */}
                   {/* <Route path='/' exact Component={Home}></Route>
-                  <Route path='register' Component={EmployeeRegistration}></Route>
+                  <Route path='register' Component={}></Route>
                   <Route path='login' Component={CustomerLogin}></Route>
                   <Route path='dashboard' Component={Dashboard}></Route>
                   <Route path='aboutus' Component={AboutUs}></Route>
