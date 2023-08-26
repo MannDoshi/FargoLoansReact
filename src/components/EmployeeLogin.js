@@ -42,7 +42,7 @@ const EmployeeLogin = () => {
       // } else {
       //   setErrorMessage('Invalid email or password.');
       // }
-    const loginSuccess = await fetch("http://localhost:8088/fargoloans/api/login",{
+    const loginSuccess = await fetch("http://localhost:8088/fargoloans/api/signin",{
         method:"POST",
         headers:{
           "Content-Type":"applciation/json",  
