@@ -21,7 +21,7 @@ import ViewEmployee from "../components/ViewEmployee";
 import ViewItem from "../components/ViewItem";
 import ViewLoanCard from "../components/ViewLoanCard";
 import AboutUs from "../components/AboutUs";
-
+import { AdminRoute } from "./AdminRoute";
 const Routes = () => {
   const { token } = useAuth();
 
@@ -44,7 +44,20 @@ const Routes = () => {
       element: <div>About Us</div>,
     },
   ];
+  
 
+  const routesForAdminOnly = [
+    {
+      path: "/",
+      element: <AdminRoute />, // Wrap the component in AdminRoute
+      children: [
+        {
+          path: "/adminDashboard",
+          element: <AdminDashboard/>,
+        },
+      ],
+    },
+  ];
   // Define routes accessible only to authenticated users
   const routesForAuthenticatedOnly = [
     {
@@ -79,10 +92,7 @@ const Routes = () => {
           path: "/empViewItems",
           element: <EmployeeViewItems/>,
         },
-        {
-          path: "/adminDashboard",
-          element: <AdminDashboard/>,
-        },
+    
         {
           path: "/addEmployee",
           element: <AddEmployee/>,
@@ -153,12 +163,14 @@ const Routes = () => {
 
   ];
   
+  
 
   // Combine and conditionally include routes based on authentication status
   const router = createBrowserRouter([
     ...routesForPublic,
     ...(!token ? routesForNotAuthenticatedOnly : []),
     ...routesForAuthenticatedOnly,
+    ...routesForAdminOnly
   ]);
 
   // Provide the router configuration using RouterProvider
