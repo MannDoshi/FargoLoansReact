@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import ItemService from '../service/ItemService';
 
@@ -15,9 +15,19 @@ const AddItem = () => {
         itemCategory: '',
     });
 
-
+    const {id} = useParams();
     const [errors, setErrors] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
+
+    // componentDidUpdate usage
+    useEffect(() => {
+        if (id !== '_add') {
+            ItemService.getItemById(id).then((response) => {
+                setItem(response.data)
+            });
+        }
+    }, [id]); // //values -id triggers re render whenever they are updated in your program,
+                //you can add multiple values by separating them by commas
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -43,22 +53,46 @@ const AddItem = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validateForm();
-        if (Object.keys(validationErrors).length === 0) {
-            try {
-                console.log(item)
-                await ItemService.createItem(item);
-                setSuccessMessage('Added Item successful!');
-                // Clear form or navigate to another page
-                alert("Added Item Successfull");
-                setTimeout(() => {
-                    history('/viewUpdateItems');
-                },2000);
-            } catch (error) {
-                console.error('Item Addition Error', error);
-                setSuccessMessage('An error occurred while adding item.');
-            }
-        } else {
+
+        if(id=="_add"){
+            if (Object.keys(validationErrors).length === 0) {
+                try {
+                    // console.log(item)
+                    await ItemService.createItem(item);
+                    setSuccessMessage('Added Item successful!');
+                    // Clear form or navigate to another page
+                    alert("Added Item Successfull");
+                    setTimeout(() => {
+                        history('/viewUpdateItems');
+                    },2000);
+                } catch (error) {
+                    console.error('Item Addition Error', error);
+                    setSuccessMessage('An error occurred while adding item.');
+                }
+            } 
+        else {
             setErrors(validationErrors);
+        }
+        }
+        else{
+            if (Object.keys(validationErrors).length === 0) {
+                try {
+                    // console.log(item)
+                    await ItemService.updateItem(item, id);
+                    setSuccessMessage('Updated Item successful!');
+                    // Clear form or navigate to another page
+                    alert("Updated Item Successfull");
+                    setTimeout(() => {
+                        history('/viewUpdateItems');
+                    },2000);
+                } catch (error) {
+                    console.error('Item Update Error', error);
+                    setSuccessMessage('An error occurred while updating item.');
+                }
+            } 
+        else {
+            setErrors(validationErrors);
+        }
         }
     };
 
@@ -90,6 +124,23 @@ const AddItem = () => {
         return validationErrors;
     };
 
+    const getTitle = () => {
+        if (id === '_add') {
+            return "Add Employee";
+        } else {
+            return "Update Employee";
+        }
+    };
+
+    const getButton = () => {
+        if (id === '_add') {
+            return  "Add Data";
+        } else {
+            return "Update";
+        }
+    };
+
+
     return (
         <>
         <section class="vh-100 my-3" style={{backgroundColor: "#FFF"}}>
@@ -101,7 +152,7 @@ const AddItem = () => {
                     <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add Item</p>
+                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{getTitle}</p>
 
                         <form class="mx-1 mx-md-4" onSubmit={handleSubmit}>
 
@@ -185,7 +236,7 @@ const AddItem = () => {
                         </div>
                         
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                            <button type="submit" class="btn btn-primary btn-lg">{getButton}</button>
                         </div>
 
                         </form>

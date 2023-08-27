@@ -56,9 +56,7 @@ const EmployeeLogin = () => {
         setSuccessMessage('Login successful. Redirecting...');
         localStorage.setItem("empId", loginSuccess);
         localStorage.setItem("isAuth", true);
-        
-           history('/dashboard'); // navigates to product Component
-       
+        history('/dashboard'); // navigates to product Component
       } else {
         setErrorMessage('Invalid email or password.');
       }

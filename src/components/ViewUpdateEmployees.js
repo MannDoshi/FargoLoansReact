@@ -38,7 +38,7 @@ function ViewUpdateEmployee(){
     };
 
     const addEmployee = () => {
-        history('/addEmployee'); // Load Component createproduct and pass '_add' as parameter
+        history('/addEmployee/_add'); // Load Component createproduct and pass '_add' as parameter
     };
 
     const editEmployee = (id) => {

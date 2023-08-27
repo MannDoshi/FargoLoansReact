@@ -38,7 +38,7 @@ function ViewUpdateLoanCards(){
     };
 
     const addLoanCard = () => {
-        history('/addLoanCard'); // Load Component createproduct and pass '_add' as parameter
+        history('/addLoanCard/_add'); // Load Component createproduct and pass '_add' as parameter
     };
 
     const editLoanCard = (id) => {

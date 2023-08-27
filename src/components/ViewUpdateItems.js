@@ -6,7 +6,7 @@ import ItemService from '../service/ItemService';
 
 function ViewUpdateItem(){
     const history = useNavigate();
-
+ 
     // state Management using useState() react Hook
     const [items, setItems] = useState([]);
     const [message, setMessage] = useState('');
@@ -38,7 +38,7 @@ function ViewUpdateItem(){
     };
 
     const addItem = () => {
-        history('/addItem'); // Load Component createproduct and pass '_add' as parameter
+        history('/addItem/_add'); // Load Component createproduct and pass '_add' as parameter
     };
 
     const editItem = (id) => {

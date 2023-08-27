@@ -49,9 +49,9 @@ function App() {
                   <Route path='empViewLoans' Component={EmployeeViewLoans}></Route>
                   <Route path='empViewItems' Component={EmployeeViewItems}></Route>
                   <Route path='adminDashboard' Component={AdminDashboard}></Route>
-                  <Route path='addEmployee' Component={AddEmployee}></Route>
-                  <Route path='addLoanCard' Component={AddLoanCard}></Route>
-                  <Route path='addItem' Component={AddItem}></Route>
+                  <Route path='addEmployee/:id' Component={AddEmployee}></Route>
+                  <Route path='addLoanCard/:id' Component={AddLoanCard}></Route>
+                  <Route path='addItem/:id' Component={AddItem}></Route>
                   <Route path='viewUpdateEmployees' Component={ViewUpdateEmployees}></Route>
                   <Route path='viewUpdateLoanCards' Component={ViewUpdateLoanCards}></Route>
                   <Route path='viewUpdateItems' Component={ViewUpdateItems}></Route>
