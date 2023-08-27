@@ -41,25 +41,7 @@ export default function Home() {
             <Navbar></Navbar>
               {/* <Routes> */}
                   <Link to='signin'>signin</Link>
-                  {/* <EmployeeRegistration></EmployeeRegistration> */}
-                  {/* <Route path='/' exact Component={Home}></Route>
-                  <Route path='register' Component={}></Route>
-                  <Route path='login' Component={CustomerLogin}></Route>
-                  <Route path='dashboard' Component={Dashboard}></Route>
-                  <Route path='aboutus' Component={AboutUs}></Route>
-                  <Route path='applyForLoan' Component={ApplyForLoan}></Route>
-                  <Route path='empViewLoans' Component={EmployeeViewLoans}></Route>
-                  <Route path='empViewItems' Component={EmployeeViewItems}></Route>
-                  <Route path='adminDashboard' Component={AdminDashboard}></Route>
-                  <Route path='addEmployee' Component={AddEmployee}></Route>
-                  <Route path='addLoanCard' Component={AddLoanCard}></Route>
-                  <Route path='addItem' Component={AddItem}></Route>
-                  <Route path='viewUpdateEmployees' Component={ViewUpdateEmployees}></Route>
-                  <Route path='viewUpdateLoanCards' Component={ViewUpdateLoanCards}></Route>
-                  <Route path='viewUpdateItems' Component={ViewUpdateItems}></Route>
-                  <Route path='viewEmployee/:id' Component={ViewEmployee}></Route>
-                  <Route path='viewItem/:id' Component={ViewItem}></Route>
-                  <Route path='viewLoanCard/:id' Component={ViewLoanCard}></Route> */}
+                  
                   {/* <Route
                   path="dashboard"
                   element={
