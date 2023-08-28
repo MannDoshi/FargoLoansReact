@@ -1,6 +1,20 @@
 import React from 'react'
+import authService from '../service/auth.service';
+import { useNavigate } from 'react-router-dom';
+
+
 
 export default function Navbar() {
+
+  // const history = useNavigate();
+
+  const handleLogout = (e) => {
+    
+    e.preventDefault();
+    authService.logout();
+    // history(`/`)
+  }
+
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -22,6 +36,9 @@ export default function Navbar() {
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/aboutus">About Us</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" onClick={handleLogout}>Logout</a>
         </li>
         
       </ul>

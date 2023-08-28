@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import authService from './auth.service';
 /*To Make RESTAPI (Spring Boot App) calls we will be using axios.
  > npm install axios
 */
@@ -19,7 +19,9 @@ class AuthenticationService{
 
     static async registerEmployee(employee) {
         try {
-          const response = await axios.post('http://localhost:8088/fargoloans/api/register_employee', employee); // Adjust the API endpoint
+          const response = await axios.post('http://localhost:8088/fargoloans/api/employee', employee); // Adjust the API endpoint
+          console.log(response.data)
+          // await authService.register( response.data, ,)
           return response.data;
         } catch (error) {
           console.error('Registration error', error);
