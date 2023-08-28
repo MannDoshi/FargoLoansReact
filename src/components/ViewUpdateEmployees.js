@@ -66,7 +66,7 @@ function ViewUpdateEmployee(){
     */
             return(
             <div>
-                <h2>Employee List</h2>
+                <h2 style={{textAlign: 'center'}}>Employee List</h2>
                 <br/>
                     <div className = "row justify-content-center">
                       <button className="btn btn-info w-auto" onClick={addEmployee}>Add Employee</button>

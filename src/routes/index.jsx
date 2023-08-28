@@ -22,6 +22,11 @@ import ViewItem from "../components/ViewItem";
 import ViewLoanCard from "../components/ViewLoanCard";
 import AboutUs from "../components/AboutUs";
 import { AdminRoute } from "./AdminRoute";
+import {library} from "@fortawesome/fontawesome-svg-core";
+import {faTrash, faEdit, faList, faHome, faSign, faSignOut, faCameraRetro, faBomb, faCoffee} from "@fortawesome/free-solid-svg-icons";
+library.add(faTrash, faEdit, faList, faHome, faSign, faSignOut, faCameraRetro, faBomb, faCoffee);
+
+
 const Routes = () => {
   const { token } = useAuth();
 
@@ -43,6 +48,78 @@ const Routes = () => {
       path: "/about-us",
       element: <div>About Us</div>,
     },
+
+    //TO BE REMOVED 
+    {
+      path: "",
+      element: <div>User Home Page</div>,
+    },
+    {
+      path: "/profile",
+      element: <div>User Profile</div>,
+    },
+    // {
+    //   path: "/logout",
+    //   element: <Logout/>,
+    // },
+     {
+      path: "/dashboard",
+      element: <Dashboard/>,
+    },
+     {
+      path: "/applyForLoan",
+      element: <ApplyForLoan/>,
+    },
+     {
+      path: "/empViewLoans",
+      element: <EmployeeViewLoans/>,
+    },
+    {
+      path: "/empViewItems",
+      element: <EmployeeViewItems/>,
+    },
+
+    {
+      path: "/addEmployee/:id",
+      element: <AddEmployee/>,
+    },
+    {
+      path: "/addLoanCard/:id",
+      element: <AddLoanCard/>,
+    },
+    {
+      path: "/addItem/:id",
+      element: <AddItem/>,
+    },
+    {
+      path: "/viewUpdateEmployees",
+      element: <ViewUpdateEmployees/>,
+    },
+    {
+      path: "/viewUpdateLoanCards",
+      element: <ViewUpdateLoanCards/>,
+    },
+    {
+      path: "/viewUpdateItems",
+      element: <ViewUpdateItems/>,
+    },
+    {
+      path: "/viewEmployee/:id",
+      element: <ViewEmployee/>,
+    },
+
+    {
+      path: "/viewItem/:id",
+      element: <ViewItem/>,
+    },
+    {
+      path: "/viewLoanCard/:id",
+      element: <ViewLoanCard/>,
+    },
+    {
+      path: "/adminDashboard",
+      element: <AdminDashboard/>,
+    },
   ];
   
 
@@ -51,10 +128,10 @@ const Routes = () => {
       path: "/",
       element: <AdminRoute />, // Wrap the component in AdminRoute
       children: [
-        {
-          path: "/adminDashboard",
-          element: <AdminDashboard/>,
-        },
+        // {
+        //   path: "/adminDashboard",
+        //   element: <AdminDashboard/>,
+        // },
       ],
     },
   ];
@@ -64,82 +141,82 @@ const Routes = () => {
       path: "/",
       element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
       children: [
-        {
-          path: "",
-          element: <div>User Home Page</div>,
-        },
-        {
-          path: "/profile",
-          element: <div>User Profile</div>,
-        },
         // {
-        //   path: "/logout",
-        //   element: <Logout/>,
+        //   path: "",
+        //   element: <div>User Home Page</div>,
         // },
-         {
-          path: "/dashboard",
-          element: <Dashboard/>,
-        },
-         {
-          path: "/applyForLoan",
-          element: <ApplyForLoan/>,
-        },
-         {
-          path: "/empViewLoans",
-          element: <EmployeeViewLoans/>,
-        },
-        {
-          path: "/empViewItems",
-          element: <EmployeeViewItems/>,
-        },
+        // {
+        //   path: "/profile",
+        //   element: <div>User Profile</div>,
+        // },
+        // // {
+        // //   path: "/logout",
+        // //   element: <Logout/>,
+        // // },
+        //  {
+        //   path: "/dashboard",
+        //   element: <Dashboard/>,
+        // },
+        //  {
+        //   path: "/applyForLoan",
+        //   element: <ApplyForLoan/>,
+        // },
+        //  {
+        //   path: "/empViewLoans",
+        //   element: <EmployeeViewLoans/>,
+        // },
+        // {
+        //   path: "/empViewItems",
+        //   element: <EmployeeViewItems/>,
+        // },
     
-        {
-          path: "/addEmployee",
-          element: <AddEmployee/>,
-        },
-        {
-          path: "/addLoanCard",
-          element: <AddLoanCard/>,
-        },
-        {
-          path: "/addItem",
-          element: <AddItem/>,
-        },
-        {
-          path: "/viewUpdateEmployees",
-          element: <ViewUpdateEmployees/>,
-        },
-        {
-          path: "/viewUpdateLoanCards",
-          element: <ViewUpdateLoanCards/>,
-        },
-        {
-          path: "/viewUpdateItems",
-          element: <ViewUpdateItems/>,
-        },
-        {
-          path: "/viewEmployee/:id",
-          element: <ViewEmployee/>,
-        },
-
-        {
-          path: "/viewItem/:id",
-          element: <ViewItem/>,
-        },
-        {
-          path: "/viewLoanCard/:id",
-          element: <ViewLoanCard/>,
-        },
-
         // {
-        //   path: "/logout",
-        //   element: <Logout/>,
+        //   path: "/addEmployee",
+        //   element: <AddEmployee/>,
+        // },
+        // {
+        //   path: "/addLoanCard",
+        //   element: <AddLoanCard/>,
+        // },
+        // {
+        //   path: "/addItem",
+        //   element: <AddItem/>,
+        // },
+        // {
+        //   path: "/viewUpdateEmployees",
+        //   element: <ViewUpdateEmployees/>,
+        // },
+        // {
+        //   path: "/viewUpdateLoanCards",
+        //   element: <ViewUpdateLoanCards/>,
+        // },
+        // {
+        //   path: "/viewUpdateItems",
+        //   element: <ViewUpdateItems/>,
+        // },
+        // {
+        //   path: "/viewEmployee/:id",
+        //   element: <ViewEmployee/>,
         // },
 
         // {
-        //   path: "/logout",
-        //   element: <Logout/>,
+        //   path: "/viewItem/:id",
+        //   element: <ViewItem/>,
         // },
+        // {
+        //   path: "/viewLoanCard/:id",
+        //   element: <ViewLoanCard/>,
+        // },
+
+        // // {
+        // //   path: "/logout",
+        // //   element: <Logout/>,
+        // // },
+
+        // // {
+        // //   path: "/logout",
+        // //   element: <Logout/>,
+        // // },
 
 
       ],

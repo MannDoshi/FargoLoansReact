@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
     } else {
       delete axios.defaults.headers.common["Authorization"];
       localStorage.removeItem("user");
-      localStorage.setItem("token");
+      localStorage.removeItem("token");
     }
   }, [token]);
 

@@ -1,4 +1,5 @@
 import './App.css';
+import Navbar from './components/Navbar';
 
 import AuthProvider from "./provider/authProvider";
 import Routes from "./routes/index";
@@ -20,7 +21,10 @@ import Routes from "./routes/index";
 function App() {
   return (
     <AuthProvider>
-    <h1>Fargo Loans</h1>
+      {/* <div className='container center'> */}
+      <Navbar></Navbar>
+      {/* </div> */}
+    
       <Routes >
     
     </Routes>

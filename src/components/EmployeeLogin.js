@@ -41,42 +41,31 @@ const EmployeeLogin = () => {
         history("/");
       })
       .catch((error) => {
-        console.error("aLogin error", error);
+        console.error("a login error", error);
         setErrorMessage("An error occurred during login.");
       });
   };
 
   return (
-    <div className="container">
-      <br></br>
-      <h2>Employee Login</h2>
-
-      <div className="form-group w-50 container">
-        <label>username</label>
-        <input
-          type="username"
-          className="form-control"
-          value={username}
-          onChange={(e) => setusername(e.target.value)}
-        />
-      </div>
-      <div className="form-group w-50 container">
-        <label>Password</label>
-        <input
-          type="password"
-          className="form-control"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-
-      <button className="btn btn-primary" onClick={handleLogin}>
-        Login
-      </button>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      {successMessage && <p className="success-message">{successMessage}</p>}
-    </div>
-  );
+      <div className="container">
+          <br></br>
+        <h2>Employee Login</h2>
+        
+            <div className="form-group w-50 container">
+                <label>Email</label>
+                <input type="text" className="form-control" value={username} onChange={(e) => setusername(e.target.value)} />
+            </div>
+            <div className="form-group w-50 container">
+                <label>Password</label>
+                <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
+            </div>
+    
+        <button className="btn btn-primary" onClick={handleLogin}>Login</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
+        </div> 
+      
+    );
 };
 
 export default EmployeeLogin;

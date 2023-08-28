@@ -7,7 +7,7 @@ export default function AdminDashboard() {
   const history = useNavigate();
 
   const empAddDataHandler = () => {
-      history("/addEmployee");
+      history("/addEmployee/_add");
   }
 
   const empViewUpdateHandler = () => {
@@ -15,7 +15,7 @@ export default function AdminDashboard() {
   }
 
   const addLoanCardHandler = () =>{
-    history("/addLoanCard");
+    history("/addLoanCard/_add");
   }
 
   const updateLoanCardHandler = () =>{
@@ -23,7 +23,7 @@ export default function AdminDashboard() {
   }
 
   const addItemHandler = () =>{
-    history("/addItem")
+    history("/addItem/_add")
   }
 
   const updateItemHandler = () =>{
@@ -31,7 +31,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div>
+    <div className='container text-center'>
 
       <h2>Admin Dashboard</h2>
 
