@@ -1,6 +1,7 @@
 import React from 'react'
 import authService from '../service/auth.service';
-import { useNavigate } from 'react-router-dom';
+// import { Navigation } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 
 
@@ -13,6 +14,7 @@ export default function Navbar() {
     e.preventDefault();
     authService.logout();
     // history(`/`)
+    return <Navigate to="/"/>
   }
 
   return (

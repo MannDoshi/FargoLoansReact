@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 import AuthenticationService from '../service/AuthenticationService';
 
@@ -13,7 +15,6 @@ const EmployeeRegistration = () => {
         name: '',
         dob: '',
         doj: '',
-        gender: '',
         password: ''
     });
 
@@ -44,10 +45,26 @@ const EmployeeRegistration = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+       
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
+            console.log("hello")
             try {
-                await AuthenticationService.registerEmployee(employee);
+                // await AuthenticationService.registerEmployee(employee);
+                // const res = await fetch('http://localhost:8088/fargoloans/api/employee/register',{
+                //     method:"POST",
+                //     mode:"cors",
+                //     headers:{
+                //         'Content-type':'application/json'
+                //     },
+                //     body:{
+                //         employee
+                //     }
+
+                // })
+                // console.log(res);
+                const response = await axios.post('http://localhost:8088/fargoloans/api/employee/register', employee); // Adjust the API endpoint
+                console.log(response.data)
                 setSuccessMessage('Registration successful!');
                 // Clear form or navigate to another page
                 alert("Registration Successfull");
@@ -77,9 +94,9 @@ const EmployeeRegistration = () => {
         //     validationErrors.fname = 'Enter Alphabets Only';
         // }
 
-        if (!employee.gender) {
-            validationErrors.gender = 'Gender is required.';
-        }
+        // if (!employee.gender) {
+        //     validationErrors.gender = 'Gender is required.';
+        // }
 
         if (!employee.password) {
             validationErrors.password = 'Password is required.';

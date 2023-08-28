@@ -106,11 +106,21 @@ class AuthService {
     localStorage.removeItem("token");
   }
 
-  register(username, email, password) {
+  register(username, email, password, employee) {
+    var role;
+    if(employee.isAdmin){
+      role = ["ROLE_ADMIN"];
+    }
+    else {
+      role=["ROLE_USER"];
+    }
+    email=email+'@gmail.com'
     return axios.post(API_URL + "signup", {
       username,
       email,
-      password
+      password,
+      role,
+      employee 
     });
   }
 
