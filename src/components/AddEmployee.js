@@ -2,6 +2,8 @@
     import { useNavigate, useParams } from 'react-router-dom';
 
     import EmployeeService from '../service/EmployeeService';
+import AuthenticationService from '../service/AuthenticationService';
+import authService from '../service/auth.service';
 
     const AddEmployee = () => {
 
@@ -62,7 +64,8 @@
                 if (Object.keys(validationErrors).length === 0) {
                     try {
                         console.log(employee)
-                        await EmployeeService.createEmployee(employee);
+                        // await EmployeeService.createEmployee(employee);
+                        await authService.register(employee.empName, employee.empName, employee.password, employee)
                         setSuccessMessage('Added Employee successful!');
                         // Clear form or navigate to another page
                         alert("Added Employee Successfull");

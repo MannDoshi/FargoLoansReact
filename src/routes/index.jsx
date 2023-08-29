@@ -21,6 +21,7 @@ import ViewEmployee from "../components/ViewEmployee";
 import ViewItem from "../components/ViewItem";
 import ViewLoanCard from "../components/ViewLoanCard";
 import AboutUs from "../components/AboutUs";
+import ReviewLoan from "../components/ReviewLoan";
 import { AdminRoute } from "./AdminRoute";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {faTrash, faEdit, faList, faHome, faSign, faSignOut, faCameraRetro, faBomb, faCoffee} from "@fortawesome/free-solid-svg-icons";
@@ -92,6 +93,10 @@ const Routes = () => {
       element: <AddItem/>,
     },
     {
+      path: "/reviewLoan",
+      element: <ReviewLoan/>,
+    },
+    {
       path: "/viewUpdateEmployees",
       element: <ViewUpdateEmployees/>,
     },
@@ -141,6 +146,10 @@ const Routes = () => {
       path: "/",
       element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
       children: [
+        {
+          path: "/register",
+          element: <EmployeeRegistration/>,
+        },
         // {
         //   path: "",
         //   element: <div>User Home Page</div>,
@@ -233,10 +242,7 @@ const Routes = () => {
       path: "/signin",
       element: <EmployeeLogin/>,
     },
-    {
-      path: "/register",
-      element: <EmployeeRegistration/>,
-    },
+   
 
   ];
   
