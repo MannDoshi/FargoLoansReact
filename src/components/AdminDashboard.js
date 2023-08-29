@@ -26,6 +26,10 @@ export default function AdminDashboard() {
     history("/addItem/_add")
   }
 
+  const reviewLoanHandler = () =>{
+    history("/reviewLoan")
+  }
+
   const updateItemHandler = () =>{
     history("/viewUpdateItems")
   }
@@ -51,6 +55,10 @@ export default function AdminDashboard() {
             <h3>Item Data Management</h3>
             <Button variant="info" onClick={addItemHandler}>Add Item</Button>{' '}
             <Button variant="info" onClick={updateItemHandler}>Update Items</Button>{' '}
+        </div>
+        <div>
+            <h3>Loan Applications Management</h3>
+            <Button variant="info" onClick={reviewLoanHandler}>Review Loans</Button>{' '}
         </div>
     
     </div>

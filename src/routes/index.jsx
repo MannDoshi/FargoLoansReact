@@ -64,6 +64,10 @@ const Routes = () => {
           element: <AdminDashboard/>,
         },
         {
+          path: "/reviewLoan",
+          element: <ReviewLoan/>,
+        },
+        {
           path: "/addEmployee/:id",
           element: <AddEmployee/>,
         },
