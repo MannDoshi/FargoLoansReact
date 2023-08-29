@@ -79,8 +79,8 @@ function ViewUpdateItem(){
                             <th> Item ID </th>
                             <th> Item Category </th>
                             <th> Item Description </th>
-                            <th> Item Make </th>
-                            <th> Item Valuation </th>
+                            {/* <th> Item Make </th>
+                            <th> Item Valuation </th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -90,8 +90,8 @@ function ViewUpdateItem(){
                                         <td> {item.itemId} </td>
                                         <td> {item.itemCategory} </td>
                                         <td> {item.itemDesc} </td>
-                                        <td> {item.itemMake} </td>
-                                        <td> {item.itemValuation} </td>
+                                        {/* <td> {item.itemMake} </td>
+                                        <td> {item.itemValuation} </td> */}
                                         <td>
                                         <button className="btn btn-success" onClick={() => editItem(item.itemId)}>
                                                 <span>

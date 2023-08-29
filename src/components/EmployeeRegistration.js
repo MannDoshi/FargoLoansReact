@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import AuthenticationService from '../service/AuthenticationService';
 
 const EmployeeRegistration = () => {
@@ -13,7 +12,6 @@ const EmployeeRegistration = () => {
         name: '',
         dob: '',
         doj: '',
-        gender: '',
         password: ''
     });
 
@@ -47,6 +45,7 @@ const EmployeeRegistration = () => {
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
             try {
+                console.log(employee);
                 await AuthenticationService.registerEmployee(employee);
                 setSuccessMessage('Registration successful!');
                 // Clear form or navigate to another page
@@ -77,9 +76,9 @@ const EmployeeRegistration = () => {
         //     validationErrors.fname = 'Enter Alphabets Only';
         // }
 
-        if (!employee.gender) {
-            validationErrors.gender = 'Gender is required.';
-        }
+        // if (!employee.gender) {
+        //     validationErrors.gender = 'Gender is required.';
+        // }
 
         if (!employee.password) {
             validationErrors.password = 'Password is required.';
@@ -152,14 +151,14 @@ const EmployeeRegistration = () => {
                             <div class="form-outline flex-fill mb-0">
                             <input 
                                 type="date" 
-                                id="form3Example1c"
+                                id="form3Example2c"
                                 name="dob" 
                                 value={employee.dob}
                                 onChange={handleChange}
                                 className={errors.dob && 'error'} />
                                 <br />
                             {errors.dob && <p className="error-message">{errors.dob}</p>}
-                            <label class="form-label" for="form3Example1c">Date of Birth</label>
+                            <label class="form-label" for="form3Example2c">Date of Birth</label>
                             </div>
                         </div>
 
@@ -168,20 +167,20 @@ const EmployeeRegistration = () => {
                             <div class="form-outline flex-fill mb-0">
                             <input 
                                 type="date" 
-                                id="form3Example1c" 
+                                id="form3Example3c" 
                                 name="doj"
                                 value={employee.doj}
                                 onChange={handleChange}
                                 className={errors.doj && 'error'} />
                                 <br />
                             {errors.doj && <p className="error-message">{errors.doj}</p>}
-                            <label class="form-label" for="form3Example1c">Date of Joining</label>
+                            <label class="form-label" for="form3Example3c">Date of Joining</label>
                             </div>
                         </div>
 
-                        <div class="d-flex flex-row align-items-center mb-4">
+                        {/* <div class="d-flex flex-row align-items-center mb-4">
 
-                            <label class="form-label mx-2" for="form3Example1c">Gender </label>
+                            <label class="form-label mx-2" for="form3Example4c">Gender </label>
                         
                             <div class="form-check form-check-inline">
                                 <input 
@@ -217,7 +216,7 @@ const EmployeeRegistration = () => {
                                 
                                 <label class="form-check-label" for="otherGender">Other</label>
                             </div>
-                        </div>
+                        </div> */}
 
                         
 

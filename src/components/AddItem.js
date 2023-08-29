@@ -11,8 +11,8 @@ const AddItem = () => {
     const [item, setItem] = useState({
         itemDesc: '',
         itemMake: '',
-        itemValuation: '',
-        itemCategory: '',
+        // itemValuation: '',
+        // itemCategory: '',
     });
 
     const {id} = useParams();
@@ -111,13 +111,13 @@ const AddItem = () => {
             validationErrors.itemDesc = 'Item Category is required.';
         } 
 
-        if (!item.itemMake) {
-            validationErrors.itemMake = 'Item Make is required.';
-        }
+        // if (!item.itemMake) {
+        //     validationErrors.itemMake = 'Item Make is required.';
+        // }
 
-        if (!item.itemValuation) {
-            validationErrors.itemValuation = 'Item Valuation is required.';
-        }
+        // if (!item.itemValuation) {
+        //     validationErrors.itemValuation = 'Item Valuation is required.';
+        // }
 
         // Add more validation rules for other fields
 
@@ -203,7 +203,7 @@ const AddItem = () => {
                             </div>
                         </div>
 
-                        <div class="d-flex flex-row align-items-center mb-4">
+                        {/* <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                         <input 
@@ -217,9 +217,9 @@ const AddItem = () => {
                             {errors.itemMake && <p className="error-message">{errors.itemMake}</p>}
                             <label className="form-label" for="form3Example_make">Item Make</label>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div class="d-flex flex-row align-items-center mb-4">
+                        {/* <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                         <input 
@@ -233,10 +233,10 @@ const AddItem = () => {
                             {errors.itemValuation && <p className="error-message">{errors.itemValuation}</p>}
                             <label className="form-label" for="form3Example_valuation">Item Valuation</label>
                             </div>
-                        </div>
+                        </div> */}
                         
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                            <button type="submit" class="btn btn-primary btn-lg">{getButton}</button>
+                            <button type="submit" class="btn btn-primary btn-lg">{getButton()}</button>
                         </div>
 
                         </form>

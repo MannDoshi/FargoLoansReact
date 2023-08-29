@@ -1,14 +1,15 @@
 import React,{useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
+import LoanCardService from '../service/LoanCardService';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import ItemService from '../service/ItemService';
+import EmployeeIssueService from '../service/EmployeeIssueService';
 
-function EmployeeViewItems(){
+function EmployeeViewLoans(){
     const history = useNavigate();
- 
+
     // state Management using useState() react Hook
-    const [items, setItems] = useState([]);
+    const [applications, setApplications] = useState([]);
     const [message, setMessage] = useState('');
 
     /*
@@ -22,43 +23,21 @@ function EmployeeViewItems(){
 
     Syntax: useEffect(<FUNCTION>, <DEPENDECY>)
      - To run useEffect on every render do not pass any dependency
-     - To run useEffect only once on the first render pass any itemty array in the dependecy
+     - To run useEffect only once on the first render pass any loanty array in the dependecy
      - To run useEffect on change of a particular value. Pass the state and props in the dependency array
      */
 
     useEffect(() => {
-        fetchItems();
+        fetchApplications();
     }, []);
 
-    const fetchItems = () => {
-        ItemService.getItems().then((response) => {
-            setItems(response.data);
+    const fetchApplications = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        EmployeeIssueService.getEmployeeIssuesByEmployeeId(user["id"]).then((response) => {
+            setApplications(response.data);
+            console.log(response.data)
         });
-        console.log(items);
-    };
-
-    const addItem = () => {
-        history('/addItem/_add'); // Load Component createproduct and pass '_add' as parameter
-    };
-
-    const editItem = (id) => {
-        history(`/addItem/${id}`); // use back Quote operator
-    };
-
-    const deleteItem = (id) => {
-        ItemService.deleteItem(id).then(() => {
-           // setProducts(products.filter(product => product.id !== id));
-           fetchItems(); // Refresh products list
-            setMessage('Item deleted successfully.'); 
-             // Clear the message after 3 seconds
-             setTimeout(() => {
-                setMessage('Item Deleted Successfully');
-            }, 2000);
-        });
-    };
-
-    const viewItem = (id) => {
-        history(`/viewItem/${id}`);
+        // console.log(applications);
     };
 
 /*
@@ -66,41 +45,39 @@ function EmployeeViewItems(){
     */
             return(
             <div>
-                <h2>Item List</h2>
+                <h2 style={{textAlign: 'center'}}>Item Purchased List</h2>
                 <br/>
-                    <div className = "row justify-content-center">
-                      <button className="btn btn-info w-auto" onClick={addItem}>Add Item</button>
-                    </div>
+
                 <br/>
                 <div className="row justify-content-center" >
                     <table className="table table-success w-auto">
                      <thead>
                         <tr className="table-danger">
-                            <th> Item ID </th>
-                            <th> Item Category </th>
-                            <th> Item Description </th>
-                            <th> Item Make </th>
-                            <th> Item Valuation </th>
+                            <th> Item Id</th>
+                            <th> Item Category</th>
+                            <th> Item Description</th>
+                            <th> Item Value </th>
+                            <th> Loan Issue Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                            {items.map(
-                                    item => 
-                                    <tr key= {item.itemiD}>
-                                        <td> {item.itemId} </td>
-                                        <td> {item.itemCategory} </td>
-                                        <td> {item.itemDesc} </td>
-                                        <td> {item.itemMake} </td>
-                                        <td> {item.itemValuation} </td>
+                            {applications.map(
+                                    appl => 
+                                    <tr key= {appl.issueId}>
+                                        <td> {appl.item.itemId} </td>
+                                        <td> {appl.loan.loanType} </td>
+                                        <td> {appl.item.itemDesc} </td> 
+                                        <td> {appl.itemValue} </td>
+                                        <td> {appl.issueStatus} </td>
                                     </tr>
                                 )
                             }
                     </tbody>
                     </table>
                 </div>
-                {message && <div className="alert alert-success">{message}</div>}
+                
             </div>
         )
                         }
 
-export default EmployeeViewItems;
+export default EmployeeViewLoans;

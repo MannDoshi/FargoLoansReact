@@ -19,8 +19,10 @@ class AuthenticationService{
 
     static async registerEmployee(employee) {
         try {
-          const response = await axios.post('http://localhost:8088/fargoloans/api/employee', employee); // Adjust the API endpoint
-          console.log(response.data)
+          const response = await axios.post('http://localhost:8088/fargoloans/api/employee', employee); // 
+          const res = authService.register(response.data.empId, response.data.empId, response.data.password)
+          // Adjust the API endpoint
+          // console.log(response.data)
           // await authService.register( response.data, ,)
           return response.data;
         } catch (error) {

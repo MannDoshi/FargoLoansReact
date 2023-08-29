@@ -4,7 +4,11 @@ const EMPLOYEES_REST_API_URL='http://localhost:8088/fargoloans/api/loan'
 
 class LoanCardService {
   static getLoanCards(){
-    return axios.get(EMPLOYEES_REST_API_URL+"/all");
+    console.log(EMPLOYEES_REST_API_URL+"/all")
+    // return axios.get(EMPLOYEES_REST_API_URL+"/all");
+    var loans =  axios.get(EMPLOYEES_REST_API_URL+"/all");
+    console.log(loans)
+    return loans;
   }
 
   static createLoanCard(loan){
