@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import './App.css';
 import Navbar from './components/Navbar';
 
@@ -19,6 +21,9 @@ import Routes from "./routes/index";
 
 
 function App() {
+
+const [isAuth, setIsAuth] = useState(false);
+
   return (
     <AuthProvider>
       {/* <div className='container center'> */}

@@ -7,6 +7,9 @@ import { Navigate } from 'react-router';
 
 export default function Navbar() {
 
+  const isLoggedIn = JSON.parse(localStorage.getItem("user"));
+  // console.log(isLoggedIn.roles[0]);
+
   // const history = useNavigate();
 
   const handleLogout = (e) => {
@@ -30,18 +33,43 @@ export default function Navbar() {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/signin">Login</a>
-        </li>
-        <li className="nav-item">
+        {
+          !isLoggedIn
+          &&
+          <li className="nav-item">
+            <a className="nav-link" href="/signin">Login</a>
+          </li>
+        }
+        {
+          !isLoggedIn && <li className="nav-item">
           <a className="nav-link" href="/register">Register</a>
         </li>
+        }
+        
         <li className="nav-item">
           <a className="nav-link" href="/aboutus">About Us</a>
         </li>
+        {
+          isLoggedIn && 
         <li className="nav-item">
           <a className="nav-link" onClick={handleLogout}>Logout</a>
         </li>
+        }
+
+        {
+          (isLoggedIn&&(isLoggedIn.roles[0]==='ROLE_USER')) &&
+          <li className="nav-item">
+          <a className="nav-link" href="/dashboard">User Dashboard</a>
+        </li>
+
+        }
+        {
+          (isLoggedIn&&(isLoggedIn.roles[0]==='ROLE_ADMIN')) &&
+          <li className="nav-item">
+          <a className="nav-link" href="/adminDashboard">Admin Dashboard</a>
+        </li>
+
+        }
         
       </ul>
       <form className="d-flex" role="search">
