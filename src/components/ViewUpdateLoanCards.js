@@ -66,7 +66,7 @@ function ViewUpdateLoanCards(){
     */
             return(
             <div>
-                <h2>Loan Card List</h2>
+                <h2 style={{textAlign: "center"}}>Loan Card List</h2>
                 <br/>
                     <div className = "row justify-content-center">
                       <button className="btn btn-info w-auto" onClick={addLoanCard}>Add Loan Card</button>

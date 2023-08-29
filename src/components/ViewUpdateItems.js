@@ -66,7 +66,7 @@ function ViewUpdateItem(){
     */
             return(
             <div>
-                <h2>Item List</h2>
+                <h2 style={{textAlign: "center"}}>Item List</h2>
                 <br/>
                     <div className = "row justify-content-center">
                       <button className="btn btn-info w-auto" onClick={addItem}>Add Item</button>
