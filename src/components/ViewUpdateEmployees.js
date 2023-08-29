@@ -33,6 +33,7 @@ function ViewUpdateEmployee(){
     const fetchEmployees = () => {
         EmployeeService.getEmployees().then((response) => {
             setEmployees(response.data);
+            console.log(response.data);
         });
         console.log(employees);
     };

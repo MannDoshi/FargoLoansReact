@@ -319,8 +319,13 @@ import authService from '../service/auth.service';
                                         type="radio" 
                                         name="isAdmin" 
                                         id="admin-yes"
-                                        onChange={handleChange}
-                                        value="Y" checked />
+                                        // defaultValue={false}
+                                        // onChange={()=>setEmployee((prevEmployee) => ({
+                                        //     ...prevEmployee,
+                                        //     isAdmin: true,
+                                        // }))}
+                                        onClick={handleChange}
+                                        value="Y" />
                                         
                                     <label class="form-check-label" for="admin-yes">Yes</label>
                                 </div>
@@ -331,7 +336,11 @@ import authService from '../service/auth.service';
                                         type="radio" 
                                         name="isAdmin"      
                                         id="admin-no"
-                                        onChange={handleChange}
+                                        // onChange={()=>setEmployee((prevEmployee) => ({
+                                        //     ...prevEmployee,
+                                        //     isAdmin: false,
+                                        // }))}
+                                        onClick={handleChange}
                                         value="N" checked/>
                                     <label class="form-check-label" for="admin-no">No</label>
                                 </div>

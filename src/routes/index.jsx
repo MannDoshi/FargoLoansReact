@@ -33,98 +33,24 @@ const Routes = () => {
 
   // Define public routes accessible to all users
   const routesForPublic = [
-    {
-      path: "/service",
-      element: <div>Service Page</div>,
-    },
+    
     {
       path: "/aboutus",
       element: <AboutUs/>,
     },
     {
-      path: "/about-us",
-      element: <div>About Us</div>,
-    },
-     {
-      path: "/about-us",
-      element: <div>About Us</div>,
-    },
-
-    //TO BE REMOVED 
-    {
-      path: "",
-      element: <div>User Home Page</div>,
+      path: "/",
+      element:<Home></Home>,
     },
     {
-      path: "/profile",
-      element: <div>User Profile</div>,
-    },
-    // {
-    //   path: "/logout",
-    //   element: <Logout/>,
-    // },
-     {
-      path: "/dashboard",
-      element: <Dashboard/>,
-    },
-     {
-      path: "/applyForLoan",
-      element: <ApplyForLoan/>,
-    },
-     {
-      path: "/empViewLoans",
-      element: <EmployeeViewLoans/>,
+      path: "/signin",
+      element: <EmployeeLogin/>,
     },
     {
-      path: "/empViewItems",
-      element: <EmployeeViewItems/>,
+      path: "/register",
+      element: <EmployeeRegistration/>,
     },
-
-    {
-      path: "/addEmployee/:id",
-      element: <AddEmployee/>,
-    },
-    {
-      path: "/addLoanCard/:id",
-      element: <AddLoanCard/>,
-    },
-    {
-      path: "/addItem/:id",
-      element: <AddItem/>,
-    },
-    {
-      path: "/reviewLoan",
-      element: <ReviewLoan/>,
-    },
-    {
-      path: "/viewUpdateEmployees",
-      element: <ViewUpdateEmployees/>,
-    },
-    {
-      path: "/viewUpdateLoanCards",
-      element: <ViewUpdateLoanCards/>,
-    },
-    {
-      path: "/viewUpdateItems",
-      element: <ViewUpdateItems/>,
-    },
-    {
-      path: "/viewEmployee/:id",
-      element: <ViewEmployee/>,
-    },
-
-    {
-      path: "/viewItem/:id",
-      element: <ViewItem/>,
-    },
-    {
-      path: "/viewLoanCard/:id",
-      element: <ViewLoanCard/>,
-    },
-    {
-      path: "/adminDashboard",
-      element: <AdminDashboard/>,
-    },
+    
   ];
   
 
@@ -133,10 +59,55 @@ const Routes = () => {
       path: "/",
       element: <AdminRoute />, // Wrap the component in AdminRoute
       children: [
+        {
+          path: "/adminDashboard",
+          element: <AdminDashboard/>,
+        },
+        {
+          path: "/addEmployee/:id",
+          element: <AddEmployee/>,
+        },
+        {
+          path: "/addLoanCard/:id",
+          element: <AddLoanCard/>,
+        },
+        {
+          path: "/addItem/:id",
+          element: <AddItem/>,
+        },
+        {
+          path: "/viewUpdateEmployees",
+          element: <ViewUpdateEmployees/>,
+        },
+        {
+          path: "/viewUpdateLoanCards",
+          element: <ViewUpdateLoanCards/>,
+        },
+        {
+          path: "/viewUpdateItems",
+          element: <ViewUpdateItems/>,
+        },
+        {
+          path: "/viewEmployee/:id",
+          element: <ViewEmployee/>,
+        },
+
+        {
+          path: "/viewItem/:id",
+          element: <ViewItem/>,
+        },
+        {
+          path: "/viewLoanCard/:id",
+          element: <ViewLoanCard/>,
+        },
         // {
-        //   path: "/adminDashboard",
-        //   element: <AdminDashboard/>,
+        //   path: "/logout",
+        //   element: <Logout/>,
         // },
+        {
+          path: "/aboutus",
+          element: <AboutUs/>,
+        },
       ],
     },
   ];
@@ -150,10 +121,10 @@ const Routes = () => {
           path: "/register",
           element: <EmployeeRegistration/>,
         },
-        // {
-        //   path: "",
-        //   element: <div>User Home Page</div>,
-        // },
+        {
+          path: "/",
+          element: <Home/>,
+        },
         // {
         //   path: "/profile",
         //   element: <div>User Profile</div>,
@@ -162,65 +133,28 @@ const Routes = () => {
         // //   path: "/logout",
         // //   element: <Logout/>,
         // // },
-        //  {
-        //   path: "/dashboard",
-        //   element: <Dashboard/>,
-        // },
-        //  {
-        //   path: "/applyForLoan",
-        //   element: <ApplyForLoan/>,
-        // },
-        //  {
-        //   path: "/empViewLoans",
-        //   element: <EmployeeViewLoans/>,
-        // },
-        // {
-        //   path: "/empViewItems",
-        //   element: <EmployeeViewItems/>,
-        // },
+         {
+          path: "/dashboard",
+          element: <Dashboard/>,
+        },
+         {
+          path: "/applyForLoan",
+          element: <ApplyForLoan/>,
+        },
+         {
+          path: "/empViewLoans",
+          element: <EmployeeViewLoans/>,
+        },
+        {
+          path: "/empViewItems",
+          element: <EmployeeViewItems/>,
+        },
+        {
+          path: "/aboutus",
+          element: <AboutUs/>,
+        },
     
-        // {
-        //   path: "/addEmployee",
-        //   element: <AddEmployee/>,
-        // },
-        // {
-        //   path: "/addLoanCard",
-        //   element: <AddLoanCard/>,
-        // },
-        // {
-        //   path: "/addItem",
-        //   element: <AddItem/>,
-        // },
-        // {
-        //   path: "/viewUpdateEmployees",
-        //   element: <ViewUpdateEmployees/>,
-        // },
-        // {
-        //   path: "/viewUpdateLoanCards",
-        //   element: <ViewUpdateLoanCards/>,
-        // },
-        // {
-        //   path: "/viewUpdateItems",
-        //   element: <ViewUpdateItems/>,
-        // },
-        // {
-        //   path: "/viewEmployee/:id",
-        //   element: <ViewEmployee/>,
-        // },
-
-        // {
-        //   path: "/viewItem/:id",
-        //   element: <ViewItem/>,
-        // },
-        // {
-        //   path: "/viewLoanCard/:id",
-        //   element: <ViewLoanCard/>,
-        // },
-
-        // // {
-        // //   path: "/logout",
-        // //   element: <Logout/>,
-        // // },
+       
 
         // // {
         // //   path: "/logout",
@@ -242,8 +176,14 @@ const Routes = () => {
       path: "/signin",
       element: <EmployeeLogin/>,
     },
-   
-
+    {
+      path: "/register",
+      element: <EmployeeRegistration/>,
+    },
+    {
+      path: "/aboutus",
+      element: <AboutUs/>,
+    },
   ];
   
   
