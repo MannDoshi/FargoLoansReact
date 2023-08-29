@@ -52,8 +52,8 @@ const Routes = () => {
 
     //TO BE REMOVED 
     {
-      path: "",
-      element: <div>User Home Page</div>,
+      path: "/home",
+      element: <Home />,
     },
     {
       path: "/profile",

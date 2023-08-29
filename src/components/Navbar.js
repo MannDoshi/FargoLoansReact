@@ -7,6 +7,9 @@ import { Navigate } from 'react-router';
 
 export default function Navbar() {
 
+  const isLoggedIn = localStorage.getItem("user");
+  console.log({isLoggedIn});
+
   // const history = useNavigate();
 
   const handleLogout = (e) => {
@@ -30,18 +33,28 @@ export default function Navbar() {
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/signin">Login</a>
-        </li>
-        <li className="nav-item">
+        {
+          !isLoggedIn
+          &&
+          <li className="nav-item">
+            <a className="nav-link" href="/signin">Login</a>
+          </li>
+        }
+        {
+          !isLoggedIn && <li className="nav-item">
           <a className="nav-link" href="/register">Register</a>
         </li>
+        }
+        
         <li className="nav-item">
           <a className="nav-link" href="/aboutus">About Us</a>
         </li>
+        {
+          isLoggedIn && 
         <li className="nav-item">
           <a className="nav-link" onClick={handleLogout}>Logout</a>
         </li>
+        }
         
       </ul>
       <form className="d-flex" role="search">
