@@ -63,9 +63,17 @@ import authService from '../service/auth.service';
             if(id=="_add"){
                 if (Object.keys(validationErrors).length === 0) {
                     try {
-                        console.log(employee)
+                        console.log(employee);
                         // await EmployeeService.createEmployee(employee);
-                        await authService.register(employee.empName, employee.empName, employee.password, employee)
+                        const emp={...employee};
+                        if(emp.isAdmin.includes('Yes')){
+                            emp.isAdmin= true;
+                        }else{
+                            emp.isAdmin= false;
+                        }
+                        console.log("employee",emp);
+
+                        await authService.register(employee.empName, employee.empName, employee.password, emp)
                         setSuccessMessage('Added Employee successful!');
                         // Clear form or navigate to another page
                         alert("Added Employee Successfull");
@@ -310,41 +318,21 @@ import authService from '../service/auth.service';
                             </div> */}
 
                             <div class="d-flex flex-row align-items-center mb-4">
-
-                                <label class="form-label mx-2" for="form3Example6c">Admin </label>
-                            
-                                <div class="form-check form-check-inline">
-                                    <input 
-                                        class="form-check-input" 
-                                        type="radio" 
-                                        name="isAdmin" 
-                                        id="admin-yes"
-                                        // defaultValue={false}
-                                        // onChange={()=>setEmployee((prevEmployee) => ({
-                                        //     ...prevEmployee,
-                                        //     isAdmin: true,
-                                        // }))}
-                                        onClick={handleChange}
-                                        value="Y" />
-                                        
-                                    <label class="form-check-label" for="admin-yes">Yes</label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <input 
-                                        class="form-check-input" 
-                                        type="radio" 
-                                        name="isAdmin"      
-                                        id="admin-no"
-                                        // onChange={()=>setEmployee((prevEmployee) => ({
-                                        //     ...prevEmployee,
-                                        //     isAdmin: false,
-                                        // }))}
-                                        onClick={handleChange}
-                                        value="N" checked/>
-                                    <label class="form-check-label" for="admin-no">No</label>
+                            <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                            <div class="form-outline flex-fill mb-0">
+                            <input 
+                                    type="text" 
+                                    id="form6Example_isAdmin" 
+                                    className={errors.isAdmin && 'error'}
+                                    name="isAdmin"
+                                    value={employee.isAdmin}
+                                    onChange={handleChange} />
+                                    <br/>
+                                {errors.isAdmin && <p className="error-message">{errors.isAdmin}</p>}
+                                <label className="form-label" for="form6Example_isAdmin">Admin</label>
                                 </div>
                             </div>
+ 
 
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-lock fa-lg me-3 fa-fw"></i>

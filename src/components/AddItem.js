@@ -126,9 +126,9 @@ const AddItem = () => {
 
     const getTitle = () => {
         if (id === '_add') {
-            return "Add Employee";
+            return "Add Item Card";
         } else {
-            return "Update Employee";
+            return "Update Item Card";
         }
     };
 
@@ -152,7 +152,7 @@ const AddItem = () => {
                     <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{getTitle}</p>
+                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">{getTitle()}</p>
 
                         <form class="mx-1 mx-md-4" onSubmit={handleSubmit}>
 

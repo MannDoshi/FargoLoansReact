@@ -111,9 +111,9 @@ const AddLoanCard = () => {
 
     const getTitle = () => {
         if (id === '_add') {
-            return "Add Employee";
+            return "Add Loan Card";
         } else {
-            return "Update Employee";
+            return "Update Loan Card";
         }
     };
 
