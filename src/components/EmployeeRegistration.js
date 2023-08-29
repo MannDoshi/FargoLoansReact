@@ -50,6 +50,8 @@ const EmployeeRegistration = () => {
         if (Object.keys(validationErrors).length === 0) {
             console.log("hello")
             try {
+                console.log(employee);
+                await AuthenticationService.registerEmployee(employee);
                 // await AuthenticationService.registerEmployee(employee);
                 // const res = await fetch('http://localhost:8088/fargoloans/api/employee/register',{
                 //     method:"POST",
@@ -63,8 +65,8 @@ const EmployeeRegistration = () => {
 
                 // })
                 // console.log(res);
-                const response = await axios.post('http://localhost:8088/fargoloans/api/employee/register', employee); // Adjust the API endpoint
-                console.log(response.data)
+                // const response = await axios.post('http://localhost:8088/fargoloans/api/employee/register', employee); // Adjust the API endpoint
+                // console.log(response.data)
                 setSuccessMessage('Registration successful!');
                 // Clear form or navigate to another page
                 alert("Registration Successfull");
@@ -169,14 +171,14 @@ const EmployeeRegistration = () => {
                             <div class="form-outline flex-fill mb-0">
                             <input 
                                 type="date" 
-                                id="form3Example1c"
+                                id="form3Example2c"
                                 name="dob" 
                                 value={employee.dob}
                                 onChange={handleChange}
                                 className={errors.dob && 'error'} />
                                 <br />
                             {errors.dob && <p className="error-message">{errors.dob}</p>}
-                            <label class="form-label" for="form3Example1c">Date of Birth</label>
+                            <label class="form-label" for="form3Example2c">Date of Birth</label>
                             </div>
                         </div>
 
@@ -185,58 +187,16 @@ const EmployeeRegistration = () => {
                             <div class="form-outline flex-fill mb-0">
                             <input 
                                 type="date" 
-                                id="form3Example1c" 
+                                id="form3Example3c" 
                                 name="doj"
                                 value={employee.doj}
                                 onChange={handleChange}
                                 className={errors.doj && 'error'} />
                                 <br />
                             {errors.doj && <p className="error-message">{errors.doj}</p>}
-                            <label class="form-label" for="form3Example1c">Date of Joining</label>
+                            <label class="form-label" for="form3Example3c">Date of Joining</label>
                             </div>
-                        </div>
-
-                        <div class="d-flex flex-row align-items-center mb-4">
-
-                            <label class="form-label mx-2" for="form3Example1c">Gender </label>
-                        
-                            <div class="form-check form-check-inline">
-                                <input 
-                                    class="form-check-input" 
-                                    type="radio" 
-                                    name="gender" 
-                                    id="femaleGender"
-                                    onChange={handleChange}
-                                    value="F" checked />
-                                    
-                                <label class="form-check-label" for="femaleGender">Female</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input 
-                                    class="form-check-input" 
-                                    type="radio" 
-                                    name="gender"      
-                                    id="maleGender"
-                                    onChange={handleChange}
-                                    value="M" />
-                                <label class="form-check-label" for="maleGender">Male</label>
-                            </div>
-
-                            <div class="form-check form-check-inline">
-                                <input 
-                                    class="form-check-input"
-                                    type="radio" 
-                                    name="gender" 
-                                    id="otherGender"
-                                    onChange={handleChange}
-                                    value="O" />
-                                
-                                <label class="form-check-label" for="otherGender">Other</label>
-                            </div>
-                        </div>
-
-                        
+                        </div>                        
 
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>

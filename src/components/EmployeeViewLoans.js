@@ -3,12 +3,13 @@ import {useNavigate} from 'react-router-dom';
 import LoanCardService from '../service/LoanCardService';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import EmployeeIssueService from '../service/EmployeeIssueService';
 
 function EmployeeViewLoans(){
     const history = useNavigate();
 
     // state Management using useState() react Hook
-    const [loanCards, setLoanCards] = useState([]);
+    const [applications, setApplications] = useState([]);
     const [message, setMessage] = useState('');
 
     /*
@@ -27,38 +28,16 @@ function EmployeeViewLoans(){
      */
 
     useEffect(() => {
-        fetchLoanCards();
+        fetchApplications();
     }, []);
 
-    const fetchLoanCards = () => {
-        LoanCardService.getLoanCards().then((response) => {
-            setLoanCards(response.data);
+    const fetchApplications = () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        EmployeeIssueService.getEmployeeIssuesByEmployeeId(user["id"]).then((response) => {
+            setApplications(response.data);
+            console.log(response.data)
         });
-        console.log(loanCards);
-    };
-
-    const addLoanCard = () => {
-        history('/addLoanCard/_add'); // Load Component createproduct and pass '_add' as parameter
-    };
-
-    const editLoanCard = (id) => {
-        history(`/addLoanCard/${id}`); // use back Quote operator
-    };
-
-    const deleteLoanCard = (id) => {
-        LoanCardService.deleteLoanCard(id).then(() => {
-           // setProducts(products.filter(product => product.id !== id));
-           fetchLoanCards(); // Refresh products list
-            setMessage('Loan Card deleted successfully.'); 
-             // Clear the message after 3 seconds
-             setTimeout(() => {
-                setMessage('Loan Card Deleted Successfully');
-            }, 2000);
-        });
-    };
-
-    const viewLoanCard = (id) => {
-        history(`/viewLoanCard/${id}`);
+        // console.log(applications);
     };
 
 /*
@@ -66,11 +45,9 @@ function EmployeeViewLoans(){
     */
             return(
             <div>
-                <h2>Loan Card List</h2>
+                <h2 style={{textAlign: 'center'}}>Loan Applied List</h2>
                 <br/>
-                    <div className = "row justify-content-center">
-                      <button className="btn btn-info w-auto" onClick={addLoanCard}>Add Loan Card</button>
-                    </div>
+
                 <br/>
                 <div className="row justify-content-center" >
                     <table className="table table-success w-auto">
@@ -79,22 +56,26 @@ function EmployeeViewLoans(){
                             <th> Loan Id</th>
                             <th> Loan Type</th>
                             <th> Loan Duration In Years</th>
+                            <th> Loan Amount</th>
+                            <th> Loan Issue Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                            {loanCards.map(
-                                    loanCard => 
-                                    <tr key= {loanCard.loanType}>
-                                        <td> {loanCard.loanId} </td>
-                                        <td> {loanCard.loanType} </td>
-                                        <td> {loanCard.durationInYears} </td> 
+                            {applications.map(
+                                    appl => 
+                                    <tr key= {appl.issueId}>
+                                        <td> {appl.loan.loanId} </td>
+                                        <td> {appl.loan.loanType} </td>
+                                        <td> {appl.loan.durationInYears} </td> 
+                                        <td> {appl.itemValue} </td>
+                                        <td> {appl.issueStatus} </td>
                                     </tr>
                                 )
                             }
                     </tbody>
                     </table>
                 </div>
-                {message && <div className="alert alert-success">{message}</div>}
+                
             </div>
         )
                         }
