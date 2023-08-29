@@ -7,8 +7,8 @@ import { Navigate } from 'react-router';
 
 export default function Navbar() {
 
-  const isLoggedIn = localStorage.getItem("user");
-  console.log({isLoggedIn});
+  const isLoggedIn = JSON.parse(localStorage.getItem("user"));
+  // console.log(isLoggedIn.roles[0]);
 
   // const history = useNavigate();
 
@@ -54,6 +54,21 @@ export default function Navbar() {
         <li className="nav-item">
           <a className="nav-link" onClick={handleLogout}>Logout</a>
         </li>
+        }
+
+        {
+          (isLoggedIn&&(isLoggedIn.roles[0]==='ROLE_USER')) &&
+          <li className="nav-item">
+          <a className="nav-link" href="/dashboard">User Dashboard</a>
+        </li>
+
+        }
+        {
+          (isLoggedIn&&(isLoggedIn.roles[0]==='ROLE_ADMIN')) &&
+          <li className="nav-item">
+          <a className="nav-link" href="/adminDashboard">Admin Dashboard</a>
+        </li>
+
         }
         
       </ul>
